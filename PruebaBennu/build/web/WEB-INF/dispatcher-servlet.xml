@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">indexController</prop>
+                <prop key="table2.htm">table2Controller</prop>
+                <prop key="table.htm">tableController</prop>
+                <prop key="add.htm">addController</prop>
+                <prop key="add2.htm">add2Controller</prop>
+                <prop key="edit.htm">editController</prop>
+                <prop key="edit2.htm">edit2Controller</prop>
+                <prop key="delete.htm">deleteController</prop>
+                <prop key="delete2.htm">delete2Controller</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <bean name="tableController" class="controller.TableController" />
+    <bean name="table2Controller" class="controller.Table2Controller" />
+    <bean name="addController" class="controller.AddController" />
+    <bean name="add2Controller" class="controller.Add2Controller" />
+    <bean name="editController" class="controller.EditController" />
+    <bean name="edit2Controller" class="controller.Edit2Controller" />
+    <bean name="deleteController" class="controller.DeleteController" />
+    <bean name="delete2Controller" class="controller.Delete2Controller" />
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+
+</beans>
